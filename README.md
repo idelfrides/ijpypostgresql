@@ -1,9 +1,9 @@
-# ijpymysql API
+# ijpypostgresql API
 
 
 ## Project Information
 
-This is an API created to work with MySQL DB in Python 3. It's a Python Package, an **API**  available to be used as a library/package on Python projects that need must to handle data from  a MySQL DB.
+This is an API created to work with postgreSQL DB in Python 3. It's a Python Package, an **API**  available to be used as a library/package on Python projects that need must to handle data from  a postgreSQL DB.
 
 The package  use **OOP** and four modules/files. All them has one Class with the same file name, the classes contain many methods used to build this app, exept process_data_form.py.
 * ModuleMySQLdb.py - configuration module and connection to local server, creating and changing the structure of db and tables.
@@ -15,15 +15,15 @@ The package  use **OOP** and four modules/files. All them has one Class with the
 
 
 ## Execution information
- App name: ijpymysql
+ App name: ijpypostgresql
  
- Description: This project is mine one of monst important project. It'is a package to handle data on MySQL DB with python.
+ Description: This project is mine one of monst important project. It'is a package to handle data on postgreSQL DB with python.
               
  @utor: Engineer Idelfrides Jorge
  
- Date started: jul. 25th, 2019
+ Date started: aug. 3td, 2019
  
- Date finished: jul. 29th, 2019
+ Date finished: aug. 8th, 2019
  
  License: on the README.md file
  
@@ -36,12 +36,10 @@ The package  use **OOP** and four modules/files. All them has one Class with the
    
   --> Path on windows: C:\Users\idelf\AppData\Local\Programs\Python\Python36\python.exe
 
- Python driver for MySQL database:
+ Python driver for PostgreSQL database:
  
-   --> PyMySQL v0.9.3
-   
-   --> PyMySQLDB v0.0.2 (doesn't used)
-   
+   --> Psycopg2 v2.8.3
+      
  -- Coding: UTF-8 --
  
  content-type: script/python; utf-8
@@ -172,7 +170,7 @@ Inside the main method you have to create an object of module you goint to need 
  
  ### Contributions
  
-Maybe WE (me and you) can build the best **Python package for handle data on MySQL DB**  to help other pythpn developers emprove their job. So feel free to start a chat or send pull requests.
+Maybe WE (me and you) can build the best **Python package for handle data on postgreSQL DB**  to help other pythpn developers emprove their job. So feel free to start a chat or send pull requests.
  
  
  ----
