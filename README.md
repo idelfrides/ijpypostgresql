@@ -34,7 +34,7 @@ The package  use **OOP** and four modules/files. All them has one Class with the
  
    --> Python 3.6.2
    
-  --> Path on windows: C:\Users\idelf\AppData\Local\Programs\Python\Python36\python.exe
+  --> Path on windows: C:\Users\user_name\AppData\Local\Programs\Python\Python36\python.exe
 
  Python driver for PostgreSQL database:
  
