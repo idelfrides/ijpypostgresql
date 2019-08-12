@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # ------------------------------------------------------
 #   ====  PACKAGE INFORMATION  ====
-# App name: ijpypostgresql_package
+# App name: ijpypostgresql_api
 # Description: module to handle data from postgreSQL
 #              DB with python 3.6
 # @utor: Engineer Idelfrides Jorge
