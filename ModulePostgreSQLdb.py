@@ -5,8 +5,8 @@
 # Description: module to handle data from postgreSQL
 #              DB with python 3.6
 # @utor: Engineer Idelfrides Jorge
-# Date started: jul. 25th, 2019
-# Date finished: jul. 29th, 2019
+# Date started: aug. 3rd, 2019
+# Date finished: aug. 8th, 2019
 # License: on the README.md file
 # Email: idelfridesjorgepapai@gmail.com
 # GitHub: @idelfrides(https:\\github.com/idelfrides/)
@@ -15,7 +15,7 @@
 # Python Interpreter:
 # --> Python 3.6.2
 # --> path on windows:
-# !C:\Users\idelf\AppData\Local\Programs\Python\Python36\python.exe
+# !C:\Users\user_name\AppData\Local\Programs\Python\Python36\python.exe
 #
 # Python driver for postgreSQL database:
 #   --> psycopg2 v2.8.3
@@ -48,9 +48,8 @@ class ModulePostgreSQLdb(object):
     # controle this app.
     # ----------------------------------------------
     appdb = 'test'            # define  db name
-
+    # pg_db = 'postgres'
     tb_test = 'tb_test'
-    # dev_tb = 'developer'
     dev_tb = 'developer'
     person_table = 'person'   # define table name
     car_table = 'car'         # define manager table
@@ -129,13 +128,13 @@ class ModulePostgreSQLdb(object):
     # This method activate the DB to be used to test
     # this package.
     # ----------------------------------------------
-    def activate_db(self, cur_con):
+    def activate_db(self, cur, db):
         try:
-            sql_use = " USE " + self.appdb
-            cur_con.execute(sql_use)
-            print('\n Database {} activated successfuly'.format(self.appdb))
-        except Exception as erro:
-            print('\n Error try to activate DB {}. \n Server said: {}'.format(self.appdb, erro))
+            sql_use = "USE " + db
+            cur.execute(sql_use)
+            print('\n Database {} activated successfuly'.format(db))
+        except Exception as error:
+            print('\n Error try to activate DB {}. \n Server said: {}'.format(db, error))
 
     # ----------------------------------------------
     # This method create a table to the DB and be
