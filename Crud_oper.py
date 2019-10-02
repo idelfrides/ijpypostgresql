@@ -1,3 +1,5 @@
+""" CRUD MODULE - CONTAIN METHODS TO MAKE A COMPLETE CRUD OPERATIONS """ 
+
 # ----------------------------------------
 #   importing modules
 # ----------------------------------------
@@ -5,13 +7,19 @@ from ijpypostgresql import ModulePostgreSQLdb as mdb
 from ijpypostgresql import HelperModule as hm
 
 
-# --------------------------------------------
-# CRUD class(module) - contain all methods
-# to build a CRUD features
-#---------------------------------------------
+
 class Crud_oper(object):
+    """
+    ---------------------------------------------
+       CRUD class(module) - contain all methods
+       to build a CRUD features
+    ---------------------------------------------
+    """
+    
     # ----------------------------------------
-    # create an object of module ModuleMySQLdb()
+    # create an object of modules
+    #   --> ModuleMySQLdb()
+    #   --> HelperModule()
     # ----------------------------------------
     mdbo = mdb.ModulePostgreSQLdb()
     hmo = hm.HelperModule()
@@ -22,13 +30,19 @@ class Crud_oper(object):
     # calling method 'module_info()'
     # ----------------------------------------------
     def __init__(self):
+        """ Call module to show description of this module/class """
+        
         self.hmo.module_crud_info()
 
-    # ----------------------------------------
-    # CREATE one record on the table.
-    # It INSERT one dev to the table
-    # ----------------------------------------
+   
     def create(self, con, cur, mytb, data):
+         """ 
+           ----------------------------------------
+               CREATE one record on the table.
+               It INSERT one dev to the table
+           ----------------------------------------
+         """
+        
         try:
             sql = "INSERT INTO " + mytb + "(name, company, salary, role, adress) VALUES (%s, %s, %s, %s, %s)"
             myvalues = (data[0], data[1], data[2], data[3], data[4])
@@ -40,13 +54,17 @@ class Crud_oper(object):
         except Exception as erro:
             print('\n Error try to INSERT INTO the table: {}. \n Server reponse: {}'.format(mytb, erro))
 
-    # ------------------------------------------
-    # CREATE many records on the table.
-    # It INSERT a number of devs to the table.
-    # The number mushnbe greater than 1
-    # and it is defined by user.
-    # ------------------------------------------
+    
     def create_many(self, con, cur, mytb, list_data):
+        """
+          ------------------------------------------
+            CREATE many records on the table.
+            It INSERT a number of devs to the table.
+            The number mushnbe greater than 1
+            and it is defined by user.
+          ------------------------------------------
+        """
+
         try:
             i = 0
             j = 5
@@ -72,13 +90,16 @@ class Crud_oper(object):
             print('\n Error try to INSERT INTO the table: {}. \n Server reponse: {}'.format(mytb, error))
 
 
-    # ------------------------------------------
-    # READ one record from the table.
-    # It SELECT all records, than converter the
-    # result set to a list of tuples. And than
-    # get FIRT dev(tuple) of list.
-    # ------------------------------------------
+   
     def read_one(self, cur, mytb):
+        """
+          ------------------------------------------
+            READ one record from the table.
+            It SELECT all records, than converter the
+            result set to a list of tuples. And than
+            get FIRT dev(tuple) of list.
+          ------------------------------------------
+        """
         print('\n I AM GONNA READ ONE \n')
         try:
             sql = "SELECT * FROM " + mytb
@@ -88,12 +109,16 @@ class Crud_oper(object):
         except Exception as error:
             print('\n Error try to SELECT FROM  table: {}. \n Server reponse: {}'.format(mytb, error))
 
-    # ------------------------------------------
-    # READ all records from the table.
-    # It SELECT all devs recorded on the table.
-    # ------------------------------------------
+    
     # TODO: do not working. i don´t know why.
     def read_all(self, cur, mytb):
+        """
+           ------------------------------------------
+             READ all records from the table.
+             It SELECT all devs recorded on the table.
+           ------------------------------------------
+        """
+
         # fetch -> buscar | fetches -> busca
         # fetchall() -> busca todas as linhas do conjunto de resultado de consulta sql
         # e retorna uma lista de tuplas. Caso o  result set for null,
@@ -109,13 +134,17 @@ class Crud_oper(object):
         except Exception as error:
             print('\n Error try to SELECT FROM  table: {}. \n Server reponse: {}'.format(mytb, error))
 
-    # --------------------------------------------
-    # READ one record from the table.
-    # It SELECT one specific record from table
-    # by using the clause WHERE. It use filter
-    # by 'name' of dev informed by user.
-    # --------------------------------------------
+  
     def read_one_filter(self, cur, mytb, dev_name):
+        """
+           --------------------------------------------
+             READ one record from the table.
+             It SELECT one specific record from table
+             by using the clause WHERE. It use filter
+             by 'name' of dev informed by user.
+           --------------------------------------------
+        """
+        
         print('\n READ ONE: {} \n'.format(dev_name))
         try:
             sql = "SELECT * FROM " + mytb + " WHERE name = %s"
