@@ -1,26 +1,39 @@
-# -------------------------------------------------------
-# This module (class) going to help you to entry data
-# to general app by from Run Terminal. It is accept
-# to entry one or many records to the table at the
-# same time.
-# -------------------------------------------------------
-class HandleDataFromTerminal(object):
+""" GET data via terminal """ 
 
-    # ---------------------------------------------------
-    # the thunder init method inicialize and show
-    # the module information to user via terminal by
-    # calling method 'module_info()'
-    # ---------------------------------------------------
+
+
+class HandleDataFromTerminal(object):
+    """
+       -------------------------------------------------------
+        This module (class) going to help you to entry data
+        to general app by from Run Terminal. It is accept
+        to entry one or many records to the table at the
+        same ti  e.
+       -------------------------------------------------------
+    """
+
     def __init__(self):
+        """
+           ---------------------------------------------------
+             the thunder init method inicialize and show
+             the module information to user via terminal by
+             calling method 'module_info()'
+           ---------------------------------------------------
+        """
        self.module_info()
-    # ---------------------------------------------------
-    # This method able user to enter data via terminal.
-    # It accept just one record by time. Then create
-    # a list and add all values to it and then return
-    # the list filled up. This method is called on your
-    # test app module as many times as you want.
-    # ---------------------------------------------------
+    
+    
+    
     def data_terminal(self):
+        """
+           ---------------------------------------------------
+            This method able user to enter data via terminal.
+            It accept just one record by time. Then create
+            a list and add all values to it and then return
+            the list filled up. This method is called on your
+            test a   p module as many times as you want.
+           ---------------------------------------------------
+        """
         print(' ---------------------------'
               '\n\t ENTRY DATA FOR ONE DEV '
               '\n ---------------------------\n')
@@ -44,15 +57,18 @@ class HandleDataFromTerminal(object):
         return data
 
 
-    # ---------------------------------------------------
-    # This method is similar to method 'data_terminal()',
-    # the only diference from it is about accept many
-    # records at the same time, the same loop. Is call
-    # is the same like 'data_terminal()' method.
-    # It call define_n() method to get number of records
-    # the user going to make.
-    # ---------------------------------------------------
+   
     def data_terminal_many(self):
+        """
+           ---------------------------------------------------
+            This method is similar to method 'data_terminal()',
+            the only diference from it is about accept many
+            records at the same time, the same loop. Is call
+            is the    ame like 'data_terminal()' method.
+            It call define_n() method to get number of records
+            the user going to make.
+          ---------------------------------------------------
+        """
         print(' ---------------------------'
               '\n ENTRY DATA FOR MANY DEV '
               '\n ---------------------------')
@@ -76,13 +92,16 @@ class HandleDataFromTerminal(object):
             dev_data.append(adress)
         return dev_data
 
-    # ---------------------------------------------------
-    # This method ask the user to inform the quantity
-    # of tuples(records) user goint to enter
-    # This method is called by 'data_terminal_many()'
-    #  method.
-    # ---------------------------------------------------
+   
     def define_n(self):
+        """
+            ---------------------------------------------------
+              This method ask the user to inform the quantity
+              o  tuples(records) user goint to enter
+              This method is called by 'data_terminal_many()'
+               method.
+            ---------------------------------------------------
+        """
         yes_n = False
         while yes_n is False:
             n = int(input('\n Entry a amount of dev (n > 1):  '))
@@ -96,13 +115,16 @@ class HandleDataFromTerminal(object):
 
         return n
 
-    # ---------------------------------------------------
-    # This method shows the propose of this module.
-    # That is his information.
-    # This method is only called by 'thunder init'
-    # method of this module/class.
-    # ---------------------------------------------------
+    
     def module_info(self):
+        """
+           --------------------------------------------------
+            This method shows the propose of this module.
+            That is his information.
+            This method is only called by 'thunder init'
+            method of this module/class.
+           ---------------------------------------------------
+        """
         # variable has information of this module
         info = 'This module going to help you to entry data to \n this app' \
                'from terminal. It is accept to entry one or many \n developers at the same time.'
