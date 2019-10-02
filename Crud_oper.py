@@ -156,13 +156,16 @@ class Crud_oper(object):
             print('\n Error try to SELECT FROM  table: {}. \n Server reponse: {}'.format(mytb, error))
 
 
-    # ------------------------------------------
-    # READ one record from the table.
-    # It SELECT some specific attibutes for all
-    # developer, all record from table
-    # The attibutes are informed by user.
-    # ------------------------------------------
     def read_some_attr(self, cur, mytb, atr1, atr2):
+        """
+        
+           ------------------------------------------
+             READ one record from the table.
+             It SELECT some specific attibutes for all
+             developer, all record from table
+             The attibutes are informed by user.
+           ------------------------------------------
+        """
         print('\n I AM GONNA READ SOME \n')
         try:
             sql = " SELECT " + atr1 + "," + atr2 + " FROM " + mytb
@@ -173,14 +176,16 @@ class Crud_oper(object):
         except Exception as error:
             print('\n Error try to SELECT FROM table: {}. \n Server reponse: {}'.format(mytb, error))
 
-
-    # ---------------------------------------------
-    # READ one record from the table.
-    # It SELECT all attributes for some developer
-    # The quantity of record to be shown is
-    # informed by user.
-    # ---------------------------------------------
+   
     def read_some_dev(self, cur, mytb, num_dev):
+        """
+           ---------------------------------------------
+             READ one record from the table.
+             It SELECT all attributes for some developer
+             The        antity of record to be shown is
+             informed by user.
+           ---------------------------------------------
+        """
         print('\n I AM GOING TO READ SOME \n')
         try:
             sql = "SELECT * FROM " + mytb
@@ -191,13 +196,16 @@ class Crud_oper(object):
         except Exception as error:
             print('\n Error try to SELECT FROM table: {}. \n Server reponse: {}'.format(mytb, error))
 
-    # ------------------------------------------------
-    # UPDATE one atribute of a record. The method
-    # takes six(6) arguments. conection | cursor |
-    # table | attribute (column) | new value | id of
-    # tuple(record)
-    # ------------------------------------------------
+   
     def update(self, con, cur, mytb, atr, new_value, myid):
+        """
+           ------------------------------------------------
+             UPDATE one atribute of a record. The method
+             takes six(6) arguments. conection | cursor |
+             table | atribute (column) | new value | id of
+             tuple(record)
+           ------------------------------------------------
+        """
         try:
             sql = "UPDATE " + mytb + " SET " + atr + " = %s  WHERE id = %s"
             val = (new_value, myid)
@@ -207,12 +215,16 @@ class Crud_oper(object):
         except Exception as error:
             print('\n Error try to UPDATE table: {}. \n Server reponse: {}'.format(mytb, error))
 
-    # ------------------------------------------------
-    # DALETE one record(tuple) of table.
-    # It takes four(4) arguments. conection | cursor |
-    # table (column) | id of tuple(record)
-    # ------------------------------------------------
+  
     def delete(self,  con, cur, mytb, thename):
+        """
+           ------------------------------------------------
+            DALETE one record(tuple) of table.
+            It takes four(4) arguments. conection | cursor |
+            table (column) | id of tuple(record)
+           ------------------------------------------------
+        """
+
         try:
             sql = " DELETE FROM " + mytb + " WHERE name = %s"
             val = (thename)
@@ -224,13 +236,16 @@ class Crud_oper(object):
             print('\n Error try to DELETE FROM  table: {}. \n Server reponse: {}'.format(mytb, error))
 
 
-    # --------------------------------------------------
-    # This method lets you free to make a custom query
-    # to your DB. You by yourself write a SQL string
-    # comand completely  and inform it to this method.
-    # The method shows via run terminal  the result.
-    # --------------------------------------------------
+   
     def custom_query(self, con, cur, mysql):
+        """
+           --------------------------------------------------
+            This method lets you free to make a custom query
+            to your DB. Yo by yourself write a SQL string
+            comand completely  and inform it to this method.
+            The method shows via run terminal  the result.
+           --------------------------------------------------
+        """
         print('\n\n THIS IS YOUR OWM QUERY STRING \n')
         try:
             cur.execute(mysql)
@@ -241,17 +256,20 @@ class Crud_oper(object):
 
 
 
-    # --------------------------------------------------
-    # This method restart the PRIMARY KEY of a table.
-    # That table is defined by user.
-    # --------------------------------------------------
+    
     #  TODO: i need to fix this method later.
     def restart_pk(self, con, cur, mytb):
+        """
+           --------------------------------------------------
+             This method restart the PRIMARY KEY of a table.
+             That table is defined by user.
+           --------------------------------------------------
+        """
         seq = mytb + "_id_seq"
         try:
             # sql = ' ALTER TABLE ' + mytb + 'AUTO_INCREMENT = 1'
             # sql = ' ALTER SEQUENCE ' + seq + ' ARESTART WITH %s'
-            sql = ' ALTER SEQUENCE ' + seq + ' ARESTART WITH = %s'
+            sql = ' ALTER SEQUENCE ' + seq + ' RESTART WITH = %s'
             start = 1
             cur.execute(sql, start)
             con.comit()
