@@ -1,9 +1,9 @@
-# ijpypostgresql API
+# ijpypostgresql
 
 
 ## Project Information
 
-This is an API created to work with postgreSQL DB in Python 3. It's a Python Package, an **API**  available to be used as a library/package on Python projects that need to handle data from  a postgreSQL DB.
+This is an package created to work with postgreSQL DB in Python 3. It's a Python Package available to be used as a library/package on Python projects that need to handle data from  a postgreSQL DB.
 
 The package  use **OOP** and four modules/files. All them has one Class with the same file name, the classes contain many methods used to build this app, exept process_data_form.py.
 * ModulePostgreSQLdb.py - configuration module and connection to local server, creating and changing the structure of db and tables.
