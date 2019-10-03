@@ -1,27 +1,27 @@
+"""
 #!/usr/bin/python
-# ------------------------------------------------------
-#   ====  PACKAGE INFORMATION  ====
-# App name: ijpypostgresql_api
-# Description: module to handle data from postgreSQL
-#              DB with python 3.6
-# @utor: Engineer Idelfrides Jorge
-# Date started: aug. 3rd, 2019
-# Date finished: aug. 8th, 2019
-# License: on the README.md file
-# Email: idelfridesjorgepapai@gmail.com
-# GitHub: @idelfrides(https:\\github.com/idelfrides/)
-# ------------------------------------------------------
-#   ====  TECHNICAL INFORMATION  ====
-# Python Interpreter:
-# --> Python 3.6.2
-# --> path on windows:
-# !C:\Users\user_name\AppData\Local\Programs\Python\Python36\python.exe
-#
-# Python driver for postgreSQL database:
-#   --> psycopg2 v2.8.3
-#  # -*- Coding: UTF-8 -*-
-# content-type: script/python; utf-8
-# ------------------------------------------------------
+------------------------------------------------------
+   ====  PACKAGE INFORMATION  ====
+ App name: ijpypostgresql
+ Description: module to handle data from postgreSQL
+              DB with python 3.x
+ @utor: Engineer Idelfrides Jorge
+ Date started: aug. 3rd, 2019
+ Date finished: aug. 8th, 2019
+ License: on the README.md file
+ Email: idelfridesjorgepapai@gmail.com
+ GitHub: @idelfrides(https:\\github.com/idelfrides/)
+ ------------------------------------------------------
+   ====  TECHNICAL INFORMATION  ====
+ Python Interpreter:
+ --> Python 3.6.2
+
+Python driver for postgreSQL database:
+   --> psycopg2 v2.8.3
+   -*- Coding: UTF-8 -*-
+ content-type: script/python; utf-8
+ ------------------------------------------------------
+"""
 
 # --------------------------------------------------
 # importing my owm modules
@@ -34,48 +34,61 @@ from ijpypostgresql import HelperModule as hm
 
 import psycopg2   # postgresql db driver for python
 
-#---------------------------------------------------
-#    ====  OPERATIONAL INFORMATION  =====
-# This module will be my library for python
-# applications working with MysSQL DB.
-# The module will create all method needed to
-# manage a db app and more other methods.
-# --------------------------------------------------
 class ModulePostgreSQLdb(object):
+    """
+       ---------------------------------------------------
+          ====  OPERATIONAL INFORMATION  =====
+         This module will be my library for python
+         appications working with MysSQL DB.
+         The module will create all method needed to
+         manage a db app and more other methods.
+       --------------------------------------------------
+    """    
+    
+    # create an o=instance of HelperModule module
     hmo = hm.HelperModule()
+    
+    
     # ----------------------------------------------
     # set db and all tables name bere to better
     # controle this app.
     # ----------------------------------------------
-    appdb = 'test'            # define  db name
+    appdb = 'test'              # define  db name
     # pg_db = 'postgres'
     tb_test = 'tb_test'
     dev_tb = 'developer'
-    person_table = 'person'   # define table name
-    car_table = 'car'         # define manager table
+    person_table = 'person'     # define table name
+    car_table = 'car'           # define manager table
     # sup_table = 'supervisor'  # define supervisor table
 
-    # -----------------------------------------------
-    # the thunder init method inicialize and show
-    # the module information to user via terminal by
-    # calling method 'app_info()'
-    # -----------------------------------------------
+    
+    
     def __init__(self):
+        """
+           -----------------------------------------------
+            e thunder init method inicialize and show
+            the module information to user via terminal by
+            calling method 'app_info()'
+           -----------------------------------------------
+        """
         self.hmo.app_info()
 
 
-    # ----------------------------------------------
-    # This method set connection to the local server,
-    # with na 'database' created. It need to set a DB.
-    # This method is only called on your main module,
-    # the same used to test the 'ijpypostgresql' package.
-    # return 'connection' with db and 'cursor'
-    # to execute quereis
-    # ----------------------------------------------
+   
     def connect2db(self):
-        print("\n EU SOU CONEXAO COM DB: connect2db \n")
+        """
+           ------------------------------------------------------
+             This method set connection to the local server,
+             with na 'database' created. It need to set a DB.
+             This method is only called on your main module,
+             the same used to test the 'ijpypostgresql' package.
+             retu  'connection' with db and 'cursor'
+             to execute quereis
+           ------------------------------------------------------
+        """
+        print("\n  I AM A CNONNECTION WITH DB: connect2db \n")
 
-        ''' Connect to the postgreSQL database sever '''
+        ''' Connect to the postgreSQL database server '''
         conn = None
         cursor = None
         try:
@@ -110,12 +123,15 @@ class ModulePostgreSQLdb(object):
         return conn, cursor
 
 
-    # ----------------------------------------------
-    # This method create a DB to be used on
-    # this package. The db is define by you/user as
-    # an attribute of this module(see on the to).
-    # ----------------------------------------------
+    
     def create_db(self, cursor, db):
+        """
+           -------------------------------------------------
+             This method create a DB to be used on
+             this package. The db is define by you/user as
+             an attribute of this module(see on the to).
+           -------------------------------------------------
+        """
         try:
             sql = "CREATE DATABASE " + db
             cursor.execute(sql)
@@ -124,11 +140,14 @@ class ModulePostgreSQLdb(object):
             print('Error by try to CREATE DB: {}. \n Server reponse: {}'.format(self.appdb, erro))
 
 
-    # ----------------------------------------------
-    # This method activate the DB to be used to test
-    # this package.
-    # ----------------------------------------------
+    
     def activate_db(self, cur, db):
+        """
+           -------------------------------------------------
+            This method activate the DB to be used to test
+            this package.
+           -------------------------------------------------
+        """
         try:
             sql_use = "USE " + db
             cur.execute(sql_use)
@@ -136,13 +155,17 @@ class ModulePostgreSQLdb(object):
         except Exception as error:
             print('\n Error try to activate DB {}. \n Server said: {}'.format(db, error))
 
-    # ----------------------------------------------
-    # This method create a table to the DB and be
-    # used on this package. Al tables is defined by
-    # you/user like  an attribute of this
-    # module(see on the to).
-    # -----------------------------------------------
+            
+    
     def create_table(self, cur, mytb):
+        """
+           --------------------------------------------------
+            This method create a table to the DB and be
+            used on this package. Al tables is defined by
+            you/user like  an attribute of this
+            module(see on the to).
+           --------------------------------------------------
+        """
         # cursor_conec = self.set_conec_with_db()
         sql_1 = "CREATE TABLE IF NOT EXISTS " + mytb
         myfields = " (id BIGSERIAL NOT NULL PRIMARY KEY, " \
@@ -158,14 +181,17 @@ class ModulePostgreSQLdb(object):
         except Exception as erro:
             print('\n Error by try to create the table: {}. \n Server reponse: {}'.format(mytb, erro))
 
-    # ----------------------------------------------
-    # This method alter a table present on DB.
-    # The method provide 3 operations: add, drop
-    # and modify. The tables and operation are
-    # defined by you/user like an attribute(tables)
-    # of this module(see on the to).
-    # -----------------------------------------------
+ 
     def alter_table(self, cur, mytb, oper, atrib):
+        """
+           -------------------------------------------------
+             This method alter a table present on DB.
+             The method provide 3 operations: add, drop
+             and modify. The tables and operation are
+             defined by you/user like an attribute(tables)
+             of this module(see on the to).
+           -------------------------------------------------
+        """
         # cur = self.set_conec_with_db()
         if oper is 'add':
             sql_1 = " ALTER TABLE " + mytb
@@ -198,12 +224,14 @@ class ModulePostgreSQLdb(object):
         else:
             pass
 
-    # --------------------------------------------------
-    # This method DROP a db/table exists.
-    # The method has 3 parameters: cursor of conection,
-    # code of struct and the name(entity) of the same.
-    # --------------------------------------------------
     def drop_struct(self, con, cur, code, entity):
+        """        
+           --------------------------------------------------
+            This method DROP a db/table exists.
+            The method has 3 parameters: cursor of conection,
+            code of struct and the name(entity) of the same.
+           --------------------------------------------------
+        """
         # cur = self.set_conec_with_db()
         op = self.hmo.info_danger(code, entity)
         if code is 'db':
@@ -235,12 +263,14 @@ class ModulePostgreSQLdb(object):
             pass
 
 
-    # --------------------------------------------------
-    # This method TRUNCATE a table presents on DB.
-    # The method has 3 parameters: connection, cursor
-    # and the table that going to be truncated.
-    # --------------------------------------------------
     def truncate(self, con, cur, mytb):
+        """        
+           --------------------------------------------------
+             This method TRUNCATE a table presents on DB.
+             The method has 3 parameters: connection, cursor
+             and the table that going to be truncated.
+           --------------------------------------------------
+        """
         try:
             sql = " TRUNCATE TABLE " + mytb
             cur.execute(sql)
@@ -278,13 +308,22 @@ class ModulePostgreSQLdb(object):
         else:
             pass
 
-    # ---------------------------------------------------
-    # This method alter a table present on DB.
-    # to make an attr as UNIQUE.It provide 2 operati5ns:
-    # add and drop. The table, operation and attribute
-    # are defined by you/user as argument of method.
-    # ---------------------------------------------------
-    def unique_constraint(self, cur, table, oper, attr):
+    
+    def unique_constraint(self, cur, attr, table, oper):
+        """
+           ------------------------------------------------------
+             This method alter a table present on DB to make
+             an attr as UNIQUE. It provide 2 operations: Add | Drop
+             The table, operation and attribute
+             are defined by you/user as arguments of method.
+           ------------------------------------------------------
+           
+           :type cur: cursor of postgreSQL connection
+           :type attr: attibute to make unique 
+           :type table: the table that contain the attribute
+           :type oper: the operations to be perform
+           :rtype: None
+        """
         unique_const_name = table + '_' + attr + '_' + 'key'
         if oper is 'add':
             print('\n ADDING ATTR {} AS UNIQUE IN TABLE {}'.format(attr, table))
@@ -310,14 +349,21 @@ class ModulePostgreSQLdb(object):
             pass
 
 
-    # ---------------------------------------------------
-    # This method close the connection with mySQL
-    # server. The conn only or cursor only or both them
-    # ---------------------------------------------------
     def close_pg_con(self, con, cur):
+        """
+           ---------------------------------------------------
+             This method close the connection with mySQL
+             server. The conn only or cursor only or both them
+           ---------------------------------------------------
+           
+           :type con: connection with postgreSQL DB
+           :type cur: cursor of postgreSQL connection
+           :rtype: None
+        """
         try:
             cur.close()
             con.close()
             print('\n PostgreSQL connection is closed successfuly \n')
         except Exception as error:
             print('Error by tring to CLOSE the connection with PostgreSQL server {}. \n\n Server said: {}'.format(con, error))
+       
