@@ -42,7 +42,7 @@ class ModulePostgreSQLdb(object):
          appications working with MysSQL DB.
          The module will create all method needed to
          manage a db app and more other methods.
-       --------------------------------------------------
+       ---------------------------------------------------
     """    
     
     # create an o=instance of HelperModule module
@@ -60,16 +60,18 @@ class ModulePostgreSQLdb(object):
     person_table = 'person'     # define table name
     car_table = 'car'           # define manager table
     # sup_table = 'supervisor'  # define supervisor table
-
     
     
     def __init__(self):
         """
-           -----------------------------------------------
-            e thunder init method inicialize and show
+           -------------------------------------------------
+            The thunder init method inicialize and show
             the module information to user via terminal by
             calling method 'app_info()'
-           -----------------------------------------------
+           -------------------------------------------------
+           
+           :type self: auto reference parameter
+           :rtype: None
         """
         self.hmo.app_info()
 
@@ -85,7 +87,11 @@ class ModulePostgreSQLdb(object):
              retu  'connection' with db and 'cursor'
              to execute quereis
            ------------------------------------------------------
+           
+           :type self: auto reference parameter
+           :rtype: connection with postgre | cursor of that connection
         """
+      
         print("\n  I AM A CNONNECTION WITH DB: connect2db \n")
 
         ''' Connect to the postgreSQL database server '''
@@ -131,6 +137,10 @@ class ModulePostgreSQLdb(object):
              this package. The db is define by you/user as
              an attribute of this module(see on the to).
            -------------------------------------------------
+           
+           :type cur: cursor of postgreSQL connection
+           :type db: data base name to be created
+           :rtype: None
         """
         try:
             sql = "CREATE DATABASE " + db
@@ -147,6 +157,10 @@ class ModulePostgreSQLdb(object):
             This method activate the DB to be used to test
             this package.
            -------------------------------------------------
+           
+           :type cur: cursor of postgreSQL connection
+           :type db: data base name to be created
+           :rtype: None
         """
         try:
             sql_use = "USE " + db
@@ -165,6 +179,10 @@ class ModulePostgreSQLdb(object):
             you/user like  an attribute of this
             module(see on the to).
            --------------------------------------------------
+           
+           :type cur: cursor of postgreSQL connection
+           :type mydb: database name where a table will be created
+           :rtype: None
         """
         # cursor_conec = self.set_conec_with_db()
         sql_1 = "CREATE TABLE IF NOT EXISTS " + mytb
@@ -191,6 +209,13 @@ class ModulePostgreSQLdb(object):
              defined by you/user like an attribute(tables)
              of this module(see on the to).
            -------------------------------------------------
+           
+           :type cur: cursor of postgreSQL connection
+           :type mydb: database name, witch contain the
+                       table that the attibute gonna be altered
+           :type oper: the operation to be perform over the attribute atrib
+           :type atrib: attibute will be altered
+           :rtype: None
         """
         # cur = self.set_conec_with_db()
         if oper is 'add':
@@ -231,7 +256,14 @@ class ModulePostgreSQLdb(object):
             The method has 3 parameters: cursor of conection,
             code of struct and the name(entity) of the same.
            --------------------------------------------------
+           
+           :type con: connection with postgreSQL DB
+           :type cur: cursor of postgreSQL connection
+           :type code: code of struct. Can be database (db) or table (tb)
+           :type entity: name of the structure defined by code parameter. 
+           :rtype: None
         """
+         
         # cur = self.set_conec_with_db()
         op = self.hmo.info_danger(code, entity)
         if code is 'db':
@@ -269,7 +301,13 @@ class ModulePostgreSQLdb(object):
              This method TRUNCATE a table presents on DB.
              The method has 3 parameters: connection, cursor
              and the table that going to be truncated.
-           --------------------------------------------------
+           --------------------------------------------------          
+           
+           :type con: connection with postgreSQL DB
+           :type cur: cursor of postgreSQL connection
+           :type mydb: database name, witch contain the
+                       table that the attibute gonna be truncated
+           :rtype; None
         """
         try:
             sql = " TRUNCATE TABLE " + mytb
@@ -280,13 +318,21 @@ class ModulePostgreSQLdb(object):
             print('\n Error by try to TRUNCATE the table: {}. \n Server reponse: {}'.format(mytb, error))
 
 
-    # --------------------------------------------------
-    # This method make a verification of a struct: db
-    # or table presents on DB.
-    # The method show(via run terminal) all db existis
-    # on the localhost or all tables on a specific db.
-    # --------------------------------------------------
+   
     def entity_verify(self, cur, entity):
+         """
+            -----------------------------------------------------
+              This method make a verification of a struct: db
+              or table presents on DB.
+              The method show(via run terminal) all db existis
+              on the localhost or all tables on a specific db.
+            ------------------------------------------------------
+            
+            :type cur: cursor of postgreSQL connection
+            :type entity: name of the structure: db or tb. 
+            :rtype: None
+         """
+         
         if entity is 'db':
             print('\n VERIFY DB')
             try:
