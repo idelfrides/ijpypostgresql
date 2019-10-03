@@ -1,9 +1,12 @@
-# ---------------------------------------------
-#   ====  MODULE INFORMATION  ====
-# ---------------------------------------------
-# this module proccess form. recover values of
-# form process them and insert on the table
-# ---------------------------------------------
+"""
+ ---------------------------------------------
+   ====  MODULE INFORMATION  ====
+ ---------------------------------------------
+ This module proccess form. Recover values of
+ form process them and insert on the table
+---------------------------------------------
+"""
+
 
 # ---------------------------------------------
 # import python modules
@@ -19,13 +22,14 @@ myform = cgi.FieldStorage()
 
 
 # --------------------------------------------
-# tratamento de dados vindos do formulário
+#  Tratamento de dados vindos do formulário
 # --------------------------------------------
 name = myform.getvalue("n_uname")
 company = myform.getvalue("n_comp")
 salary = myform.getvalue("n_salary")
 role = myform.getvalue('n_role')
 adress = myform.getvalue('n_adress')
+
 
 #  REGULAR EXPRESSION PYTHONS
 
@@ -37,7 +41,7 @@ print('\n {}\n {}\n {}\n {} \n {}'.format(name, company, salary, role, adress))
 # ---------------------------------------------
 # create a list called data o store data on it
 # ---------------------------------------------
-data = list()  #
+data = list()  
 
 # ---------------------------------------------
 # add values recovered from form to data list
@@ -50,7 +54,8 @@ data.append(adress)
 
 
 # ---------------------------------------------
-#  create objects from  modules of ijpymysql_package package
+#  create objects from  modules of ijpymysql_package 
+#  package
 # ---------------------------------------------
 mdbo = mdb.ModuleMySQLdb()
 cbo = cb.Crud_build()
