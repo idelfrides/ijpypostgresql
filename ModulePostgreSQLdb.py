@@ -1,8 +1,10 @@
-"""
 #!/usr/bin/python
+
+"""
 ------------------------------------------------------
    ====  PACKAGE INFORMATION  ====
  App name: ijpypostgresql
+ Version: 1.0.0
  Description: module to handle data from postgreSQL
               DB with python 3.x
  @utor: Engineer Idelfrides Jorge
@@ -39,7 +41,7 @@ class ModulePostgreSQLdb(object):
        ---------------------------------------------------
           ====  OPERATIONAL INFORMATION  =====
          This module will be my library for python
-         appications working with MysSQL DB.
+         appications working with postgreSQL DB.
          The module will create all method needed to
          manage a db app and more other methods.
        ---------------------------------------------------
@@ -73,7 +75,9 @@ class ModulePostgreSQLdb(object):
            :type self: auto reference parameter
            :rtype: None
         """
+         
         self.hmo.app_info()
+      
 
 
    
@@ -81,11 +85,11 @@ class ModulePostgreSQLdb(object):
         """
            ------------------------------------------------------
              This method set connection to the local server,
-             with na 'database' created. It need to set a DB.
+             with a 'database' created. It need to set a DB.
              This method is only called on your main module,
              the same used to test the 'ijpypostgresql' package.
-             retu  'connection' with db and 'cursor'
-             to execute quereis
+             Return  'connection' with db and 'cursor'
+             to execute quereis.
            ------------------------------------------------------
            
            :type self: auto reference parameter
@@ -100,7 +104,7 @@ class ModulePostgreSQLdb(object):
         try:
             # make a connection
             conn = psycopg2.connect(
-                host='127.0.0.1',   # 127.0.0.1 | localhost
+                host='127.0.0.1',       # 127.0.0.1 | localhost
                 port = '5432',
                 database='test',
                 user='postgres',
@@ -139,9 +143,10 @@ class ModulePostgreSQLdb(object):
            -------------------------------------------------
            
            :type cur: cursor of postgreSQL connection
-           :type db: data base name to be created
+           :type db: database name to be created
            :rtype: None
         """
+         
         try:
             sql = "CREATE DATABASE " + db
             cursor.execute(sql)
@@ -162,6 +167,7 @@ class ModulePostgreSQLdb(object):
            :type db: data base name to be created
            :rtype: None
         """
+      
         try:
             sql_use = "USE " + db
             cur.execute(sql_use)
@@ -184,6 +190,7 @@ class ModulePostgreSQLdb(object):
            :type mydb: database name where a table will be created
            :rtype: None
         """
+      
         # cursor_conec = self.set_conec_with_db()
         sql_1 = "CREATE TABLE IF NOT EXISTS " + mytb
         myfields = " (id BIGSERIAL NOT NULL PRIMARY KEY, " \
@@ -217,6 +224,7 @@ class ModulePostgreSQLdb(object):
            :type atrib: attibute will be altered
            :rtype: None
         """
+         
         # cur = self.set_conec_with_db()
         if oper is 'add':
             sql_1 = " ALTER TABLE " + mytb
@@ -309,6 +317,7 @@ class ModulePostgreSQLdb(object):
                        table that the attibute gonna be truncated
            :rtype; None
         """
+         
         try:
             sql = " TRUNCATE TABLE " + mytb
             cur.execute(sql)
@@ -370,6 +379,7 @@ class ModulePostgreSQLdb(object):
            :type oper: the operations to be perform
            :rtype: None
         """
+      
         unique_const_name = table + '_' + attr + '_' + 'key'
         if oper is 'add':
             print('\n ADDING ATTR {} AS UNIQUE IN TABLE {}'.format(attr, table))
@@ -406,6 +416,7 @@ class ModulePostgreSQLdb(object):
            :type cur: cursor of postgreSQL connection
            :rtype: None
         """
+         
         try:
             cur.close()
             con.close()
