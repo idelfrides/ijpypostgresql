@@ -8,7 +8,7 @@ class HandleDataFromTerminal(object):
         This module (class) going to help you to entry data
         to general app by from Run Terminal. It is accept
         to entry one or many records to the table at the
-        same ti  e.
+        same time.
        -------------------------------------------------------
     """
 
