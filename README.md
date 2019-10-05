@@ -1,4 +1,4 @@
-# ijpypostgresql
+# ijpypostgresql Package
 
 
 ## Project Information
