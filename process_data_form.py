@@ -74,6 +74,6 @@ devtb = mdbo.dev_table
 # ---------------------------------------------
 #  create an  record on the table
 # ---------------------------------------------
-cbo.create(con, cur, devtb, data)
+cbo.insert(con, cur, devtb, data)
 
 
