@@ -17,8 +17,8 @@ class Crud_oper(object):
     """
     
     # ----------------------------------------
-    # create an object of modules
-    #   --> ModuleMySQLdb()
+    #  Create an object of modules
+    #   --> ModulePostgreSQLdb()
     #   --> HelperModule()
     # ----------------------------------------
     mdbo = mdb.ModulePostgreSQLdb()
@@ -35,12 +35,14 @@ class Crud_oper(object):
         self.hmo.module_crud_info()
 
    
-    def create(self, con, cur, mytb, data):
+    def insert(self, con, cur, mytb, data):
          """ 
-           ----------------------------------------
-               CREATE one record on the table.
-               It INSERT one dev to the table
-           ----------------------------------------
+           ---------------------------------------------------
+             To create and record in any table, it's
+             required to insert data in a table to that
+             tuple. That's why INSERT method is necessary
+             in ths package.
+           ---------------------------------------------------
          """
         
         try:
@@ -55,14 +57,11 @@ class Crud_oper(object):
             print('\n Error try to INSERT INTO the table: {}. \n Server reponse: {}'.format(mytb, erro))
 
     
-    def create_many(self, con, cur, mytb, list_data):
+    def insert_many(self, con, cur, mytb, list_data):
         """
-          ------------------------------------------
-            CREATE many records on the table.
-            It INSERT a number of devs to the table.
-            The number mushnbe greater than 1
-            and it is defined by user.
-          ------------------------------------------
+          -----------------------------------------------
+            INSERT many records on the table in one go. 
+          -----------------------------------------------
         """
 
         try:
@@ -157,8 +156,7 @@ class Crud_oper(object):
 
 
     def read_some_attr(self, cur, mytb, atr1, atr2):
-        """
-        
+        """        
            ------------------------------------------
              READ one record from the table.
              It SELECT some specific attibutes for all
