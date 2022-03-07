@@ -1,6 +1,5 @@
+
 """ GET data via terminal """
-
-
 
 class HandleDataFromTerminal(object):
     """
@@ -12,6 +11,7 @@ class HandleDataFromTerminal(object):
        -------------------------------------------------------
     """
 
+
     def __init__(self):
         """
            ---------------------------------------------------
@@ -20,6 +20,7 @@ class HandleDataFromTerminal(object):
              calling method 'module_info()'
            ---------------------------------------------------
         """
+
         self.module_info()
 
 
@@ -91,6 +92,7 @@ class HandleDataFromTerminal(object):
             dev_data.append(role)    # função = role
             dev_data.append(adress)
         return dev_data
+
 
 
     def define_n(self):

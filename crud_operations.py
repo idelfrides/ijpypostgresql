@@ -3,14 +3,12 @@
 
 
 """ CRUD MODULE - CONTAIN METHODS TO MAKE A COMPLETE CRUD OPERATIONS """
-
+]
 # ----------------------------------------
 #   importing modules
 # ----------------------------------------
 from ModulePostgreSQLdb  import ModulePostgreSQLdb as mdb
 from HelperModule import HelperModule as hm
-
-
 
 class CrudOperations(object):
     """
@@ -20,11 +18,6 @@ class CrudOperations(object):
     ---------------------------------------------
     """
 
-    # ----------------------------------------
-    #  Create an object of modules
-    #   --> ModulePostgreSQLdb()
-    #   --> HelperModule()
-    # ----------------------------------------
     mdbo = mdb.ModulePostgreSQLdb()
     hmo = hm.HelperModule()
 
@@ -41,6 +34,8 @@ class CrudOperations(object):
 
     def insert(self, con, cur, mytb, data):
         """
+        self.hmo.module_crud_info()
+
            ---------------------------------------------------
              To create and record in any table, it's
              required to insert data in a table to that
@@ -65,7 +60,8 @@ class CrudOperations(object):
         """
           -----------------------------------------------
             INSERT many records on the table in one go.
-          -----------------------------------------------
+
+            def insert_many(self, con, cur, mytb, list_data):
         """
 
         try:
@@ -91,7 +87,6 @@ class CrudOperations(object):
             print(" {} Dev inserted.".format(cur.rowcount))
         except Exception as error:
             print('\n Error try to INSERT INTO the table: {}. \n Server reponse: {}'.format(mytb, error))
-
 
 
     def read_one(self, cur, mytb):
@@ -238,7 +233,6 @@ class CrudOperations(object):
             print('\n Error try to DELETE FROM  table: {}. \n Server reponse: {}'.format(mytb, error))
 
 
-
     def custom_query(self, con, cur, mysql):
         """
            --------------------------------------------------
@@ -255,8 +249,6 @@ class CrudOperations(object):
             print('\n\n QUERY SUCCESSFULL \n\n')
         except Exception as error:
             print('\n Error by executing YOUR QUERY. \n Server said: {}'.format(error))
-
-
 
 
     #  TODO: i need to fix this method later.

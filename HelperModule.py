@@ -6,7 +6,6 @@
 # import winsound
 
 
-
 class HelperModule(object):
     """
        --------------------------------------------------
@@ -29,7 +28,6 @@ class HelperModule(object):
               method of ModuleMySQLdb module/class.
             ---------------------------------------------------
         """
-
 
         info = '''
         ----------------------------------------------
@@ -84,8 +82,11 @@ class HelperModule(object):
               It return [1] to drop or [0] to quit
             ---------------------------------------------------
         """
+
         self.beep_alert()
+
         yes_drop = 0
+
         if code == 'db':
             infor = '''
             **************************************************
@@ -148,7 +149,6 @@ class HelperModule(object):
             return yes_drop
         else:
             pass
-
 
 
     def module_crud_info(self):
