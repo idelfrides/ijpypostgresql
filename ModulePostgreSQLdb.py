@@ -78,7 +78,7 @@ class ModulePostgreSQLdb(object):
         self.port = conn_params['port']
 
 
-    def connection2db(self):
+    def connect2db(self):
         """
            ------------------------------------------------------
              This method set connection to the local server,
@@ -91,8 +91,6 @@ class ModulePostgreSQLdb(object):
            :type self: auto reference parameter
            :rtype: connection with postgre | cursor of that connection
         """
-
-        print("\n  I AM A CNONNECTION WITH DB: connectionnect2db \n")
 
         ''' connectionnect to the postgreSQL database server '''
         connectionn = None
